@@ -53,6 +53,7 @@ class AuthController extends Controller{
                 'status' => 200, 
                 'username' => $user->name, 
                 'token' => $token, 
+                'role_as' => $$user->role_as, 
                 'message' => 'Sikeres (Laravel)'
             ]);
 
@@ -93,12 +94,22 @@ class AuthController extends Controller{
 
        }else{
 
-         $token = $user->createToken($user->email.'_Token')->plainTextToken;
+
+        if ($user->role_as == 1) {
+
+            $token = $user->createToken($user->email.'_AdminToken', ['server:admin'])->plainTextToken; //server:admin = az ApiAdminMiddlevare-ben van meghatározva
+            
+        }else{
+
+         $token = $user->createToken($user->email.'_Token', [''])->plainTextToken; // Ez a normál user-nek készíti
+        }
+
 
             return response()->json([
                 'status' => 200, 
                 'username' => $user->name, 
                 'token' => $token, 
+                 'role_as' => $user->role_as, 
                 'message' => 'Sikeres belépés(Laravel)'
             ]);
        }
