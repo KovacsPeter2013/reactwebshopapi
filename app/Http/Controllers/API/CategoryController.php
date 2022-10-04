@@ -161,4 +161,34 @@ class CategoryController extends Controller{
 
 
 
+
+    public function destroy($id){
+
+    	$category = Category::find($id);
+
+
+    	if ($category) {
+    		
+    		$category->delete();
+    	  	return response()->json([	
+    		'status' => 200,
+    		'message' => 'Kategória sikeresen törölve'
+    	]);
+
+    	}else{
+
+    		 return response()->json([
+    		'status' => 200,
+    		'message' => 'Kategória ID nem található'
+    	]);
+    	}
+
+    }
+
+
+
+
+
+
+
 }
