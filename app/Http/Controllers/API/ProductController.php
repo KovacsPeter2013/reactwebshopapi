@@ -102,16 +102,42 @@ class ProductController extends Controller{
 
 
 
-    public function ViewProduct(){
+			    public function ViewProduct(){
 
-    	$products = Product::all();
+			    	$products = Product::all();
 
-       return response()->json([
-		'status' => 200,
-		'products' => $products
+			       return response()->json([
+					'status' => 200,
+					'products' => $products
 
-	]);
-    }
+				]);
+			    }
+
+
+
+
+               public function edit($id){
+
+
+			    	$product = Product::find($id);
+
+			    	if ($product) {
+
+				    	return response()->json([
+						'status' => 200,
+						'product' => $product
+
+					    ]);
+
+			    	}else{
+
+ 					return response()->json([
+					'status' => 404,
+					'message' => 'Termék nem található'
+
+				    ]);
+			    	}
+			    }
 
 
 }
