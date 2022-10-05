@@ -188,6 +188,20 @@ class CategoryController extends Controller{
 
 
 
+    public function allcategory(){
+
+
+    	$category = Category::where('status', '0')->get(); // Ahol a státusz 0...
+    	return response()->json([
+
+    		'status' => 200,
+    		'category' => $category
+    	]);
+    }
+
+
+
+
 
 
 
