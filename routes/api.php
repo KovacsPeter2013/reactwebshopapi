@@ -43,6 +43,7 @@ Route::get('all-category',[CategoryController::class, 'allcategory']);
 
 
 Route::post('store-product', [ProductController::class, 'store']);
+Route::get('view-product', [ProductController::class, 'ViewProduct']);
 
 
 });
