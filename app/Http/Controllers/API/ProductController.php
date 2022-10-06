@@ -229,9 +229,9 @@ class ProductController extends Controller{
 
 
 
-	    		$product->featured = $request->input('featured') ? '1' : '0';
-	    		$product->popular = $request->input('popular') ? '1' : '0';
-	    		$product->status = $request->input('status') ? '1' : '0';
+	    		$product->featured = $request->input('featured');
+	    		$product->popular = $request->input('popular');
+	    		$product->status = $request->input('status');
 
 	    		$product->update();
 

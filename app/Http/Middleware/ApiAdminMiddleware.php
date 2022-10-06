@@ -26,15 +26,11 @@ class ApiAdminMiddleware
 
              return $next($request);
 
-            }else{
+            }else if(auth()->user()){
 
-                return response()->json([
-                'status' => 401,
-                'message' => 'Hozzáférés megtagadva'
-            ], 403);
+                  return $next($request);       
+
             }
-
-        }else{
 
             return response()->json([
 
