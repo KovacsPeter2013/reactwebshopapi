@@ -6,6 +6,7 @@ use App\Http\Controllers\TesztController;
 use App\Http\Controllers\API\CategoryController;
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\ProductController;
+use App\Http\Controllers\API\FrontendController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,14 @@ use App\Http\Controllers\API\ProductController;
 */
 Route::post("register", [AuthController::class, "register"]); 
 Route::post("login", [AuthController::class, "login"]); 
+Route::get('getcategory', [FrontendController::class, "category"]);
+Route::get('fetchcategory/{slug}', [FrontendController::class, "FetchCategoryBySlug"]);
+
+
+
+
+
+
 
 
 
